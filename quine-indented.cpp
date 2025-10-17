@@ -2,6 +2,7 @@
 #include <string>
 #include <vector>
 #include <cstddef>
+#include <sstream>
 
 int
 main()
@@ -14,6 +15,7 @@ main()
         "#include <string>",
         "#include <vector>",
         "#include <cstddef>",
+        "#include <sstream>",
         "",
         "int",
         "main()",
@@ -22,34 +24,38 @@ main()
         "    const std::vector<std::string> src",
         "    {",
         "    };",
-        "    for (std::size_t i {1}; i < 12; ++i)",
+        "    std::ostringstream oss {};",
+        "    for (std::size_t i {1}; i < 13; ++i)",
         "    {",
-        "        std::cout << src[i] << lf;",
+        "        oss << src[i] << lf;",
         "    }",
         "    for (const std::string &s : src)",
         "    {",
-        "        std::cout << src[0] << q << s << q << cma << lf;",
+        "        oss << src[0] << q << s << q << cma << lf;",
         "    }",
-        "    for (std::size_t i {12}; i < src.size(); ++i)",
+        "    for (std::size_t i {13}; i < src.size(); ++i)",
         "    {",
-        "        std::cout << src[i] << lf;",
+        "        oss << src[i] << lf;",
         "    }",
+        "    std::cout << oss.str();",
         "    return 0;",
         "}",
         "",
     };
-    for (std::size_t i {1}; i < 12; ++i)
+    std::ostringstream oss {};
+    for (std::size_t i {1}; i < 13; ++i)
     {
-        std::cout << src[i] << lf;
+        oss << src[i] << lf;
     }
     for (const std::string &s : src)
     {
-        std::cout << src[0] << q << s << q << cma << lf;
+        oss << src[0] << q << s << q << cma << lf;
     }
-    for (std::size_t i {12}; i < src.size(); ++i)
+    for (std::size_t i {13}; i < src.size(); ++i)
     {
-        std::cout << src[i] << lf;
+        oss << src[i] << lf;
     }
+    std::cout << oss.str();
     return 0;
 }
 
